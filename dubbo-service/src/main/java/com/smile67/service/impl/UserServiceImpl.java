@@ -9,6 +9,6 @@ import org.apache.dubbo.config.annotation.Service;
 public class UserServiceImpl implements UserService {
     @Override
     public String sayHello() {
-        return "hello duubbo!";
+        return "hello duubbo! hello";
     }
 }
