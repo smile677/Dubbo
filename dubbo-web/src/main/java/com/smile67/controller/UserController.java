@@ -1,7 +1,7 @@
 package com.smile67.controller;
 
 import com.smile67.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,7 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
     // 注入userService
-    @Autowired
+    //@Autowired // 本地注入
+
+    /**
+     * 1. 从注册中心zookeeper获取userService的访问url地址
+     * 2. 通过url地址远程调用userService（RPC）
+     * 3. 将调用结果封装为一个代理对象，给变量赋值
+     */
+    @Reference // 远程注入
     private UserService userService;
 
     @RequestMapping("/sayHello")
