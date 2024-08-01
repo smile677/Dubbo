@@ -11,7 +11,10 @@
     <!--1.配置项目的名称 唯一-->
     <dubbo:application name="dubbo-service"/>
     <!--2.配置注册中心的地址-->
-    <dubbo:registry address="zookeeper://:2181"/>
+    <dubbo:registry address="zookeeper://47.109.188.124:2181"/>
     <!--3.配置dubbo包的扫描路径-->
     <dubbo:annotation package="com.smile67.service"/>
+
+    <!-- 元数据配置 -->
+    <dubbo:metadata-report address="zookeeper://47.109.188.124:2181" />
 </beans>

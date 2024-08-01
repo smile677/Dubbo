@@ -1,5 +1,6 @@
 package com.smile67.service.impl;
 
+import com.smile67.pojo.User;
 import com.smile67.service.UserService;
 import org.apache.dubbo.config.annotation.Service;
 
@@ -10,5 +11,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public String sayHello() {
         return "hello duubbo! hello";
+    }
+
+    @Override
+    public User findUserById(int id) {
+        // 查询用户
+        User user = new User(id, "张三", "123");
+        return user;
     }
 }

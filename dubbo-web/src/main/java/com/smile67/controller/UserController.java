@@ -1,5 +1,6 @@
 package com.smile67.controller;
 
+import com.smile67.pojo.User;
 import com.smile67.service.UserService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,5 +23,16 @@ public class UserController {
     @RequestMapping("/sayHello")
     public String sayHello() {
         return userService.sayHello();
+    }
+
+    /**
+     * 根据id查询用户信息
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/find")
+    public User find(int id) {
+        return userService.findUserById(id);
     }
 }
