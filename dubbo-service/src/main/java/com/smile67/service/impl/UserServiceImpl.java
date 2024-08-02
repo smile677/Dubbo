@@ -7,8 +7,10 @@ import org.apache.dubbo.config.annotation.Service;
 
 //@Service// 将该类的对象创建出来，放到Spring的IOC容器中 bean定义
 // 导入dubbo的注解  将这个类提供的方法（服务）对外发布。将访问的ip端口路径注册到 注册中心
-@Service(timeout = 3000, retries = 0)
+@Service(timeout = 3000, retries = 2) // 当前服务3秒超时，重试2次
 public class UserServiceImpl implements UserService {
+    int i = 1;
+
     @Override
     public String sayHello() {
         return "hello duubbo! hello";
@@ -16,6 +18,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserById(int id) {
+        System.out.println("服务调用次数 = " + i++);
         // 查询用户
         User user = new User(id, "张三", "123");
         try {
